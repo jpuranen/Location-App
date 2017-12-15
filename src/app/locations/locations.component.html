@@ -1,0 +1,33 @@
+<!-- <app-map [locations]="locations" ></app-map>> -->
+
+<table border="1">
+    <thead>
+    <tr>
+        <td [attr.colspan]="4"><app-map [locations]="locations" ></app-map></td>
+    </tr>
+  
+      <tr>
+         <th>#</th>
+         <th>Latitude</th>
+         <th>Longitude</th>
+         <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      
+      <!-- iterate for each location -->
+
+        <tr *ngFor="let location of locations">
+          <td>{{location.id}}</td>
+          <td>{{location.latitude}}</td>
+          <td>{{location.longitude}}</td>
+          <td><button (click)="delete(location.id)">Delete</button></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="text" placeholder="latitude" name="latitudeText" [(ngModel)]="latitude" /></td>
+          <td><input type="text" placeholder="longitude"name="longitudeText" [(ngModel)]="longitude" /></td>
+          <td><button (click)="sendToServer()">Add New</button></td>
+        </tr>
+  </tbody>
+</table>

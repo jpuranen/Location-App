@@ -27,4 +27,5 @@ import { MapComponent } from './map/map.component';
     })],
   providers: [LocationService],
   bootstrap: [AppComponent]
+})
 export class AppModule { }

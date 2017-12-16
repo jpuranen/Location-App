@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LocationService } from '../locations/location.service';
+import { Location } from '../locations/interfaces/location';
 
-interface Location {
-  id: number, latitude: number, longitude: number
-}
 
 @Component({
   selector: 'app-map',

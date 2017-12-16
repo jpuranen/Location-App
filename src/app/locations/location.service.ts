@@ -1,10 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface LocationResponse {
-  id: number, latitude: number, longitude: number
-}
+import { Location } from '../locations/interfaces/location';
 
 @Injectable()
 export class LocationService {
@@ -15,10 +12,10 @@ export class LocationService {
     this.http = http 
   }
   fetch(f: any) : void {
-    this.http.get<LocationResponse[]>('http://localhost:8080/api/locations/').subscribe(f);
+    this.http.get<Location[]>('http://localhost:8080/api/locations/').subscribe(f);
   }
   posti(ff: any, b: Object) : void {
-    let res = this.http.post<LocationResponse>('http://localhost:8080/api/locations/',b).subscribe(ff);
+    let res = this.http.post<Location>('http://localhost:8080/api/locations/',b).subscribe(ff);
   } 
   delete(id : number, success : any, error : any) {
     let url = 'http://localhost:8080/api/locations/' + id;

@@ -2,15 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from './location.service';
+import { Location } from '../locations/interfaces/location';
 
 import {Http, Response} from '@angular/http';
-interface LocationResponse {
-  id: number, latitude: number, longitude: number
-}
-
-interface Location {
-  id: number, latitude: number, longitude: number
-}
 
 @Component({
   selector: 'app-locations',

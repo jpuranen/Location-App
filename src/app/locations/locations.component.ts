@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { LocationService } from './location.service';
 
 import {Http, Response} from '@angular/http';
+interface LocationResponse {
+  id: number, latitude: number, longitude: number
+}
 
 interface Location {
   id: number, latitude: number, longitude: number
@@ -25,42 +28,33 @@ export class LocationsComponent implements OnInit {
 
  
   constructor(locationService : LocationService) {
-    //this.locations = locationService.fetch()
     this.locationService = locationService;
   }
 
 ngOnInit() { 
-  console.log("locations.component.ngOnInit...")
-  this.locationService.fetch(this.res.bind(this))
-  //console.log("location component init")
-  //console.log("locations: " + this.locations.length)
+  //console.log("locations.component.ngOnInit...")
+  this.locationService.fetch((result) => this.locations = result);
 } 
-res(result) {
-  this.locations = result;
-}
 sendToServer() {
-  console.log("locations.component.sendToServer...")
+  console.log("locations.component.sendToServer sending coords...")
   let body = {"latitude": this.latitude, "longitude": this.longitude}
-  this.locationService.posti((result) => {
-    this.locations.push(result);
-  }, body)
+  this.locationService.posti((result) => {this.locations.push(result)}, body);
 } 
 delete(id : number) {
   console.log("locations.component.delete...")
-  console.log("id: " + id);
   this.idtoberemoved = id;
   this.locationService.delete(id, this.success.bind(this), this.error.bind(this));
 }
 error(err : HttpErrorResponse) {
   this.idtoberemoved = -1;
-  console.log("Delete did not succeed")
+  console.log("Delete did not succeed: " + err)
 }
 success(response : HttpResponse<string>) {
-  console.log("Delete succeeded" + this.idtoberemoved)
+  console.log("Delete succeeded: id#" + this.idtoberemoved)
 
   for (let loc of this.locations) {
     if (loc.id === this.idtoberemoved) {
-      console.log(this.locations.indexOf(loc))
+      //console.log("Index of removed location: " + this.locations.indexOf(loc))
       this.locations.splice(this.locations.indexOf(loc),1)
     }
   }

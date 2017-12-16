@@ -23,10 +23,9 @@ import { MapComponent } from './map/map.component';
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR KEY'
-    })
-  ],
-  providers: [LocationService],
-  bootstrap: [AppComponent]
+      apiKey: 'YOUR KEY'})
+    ],
+    providers: [LocationService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

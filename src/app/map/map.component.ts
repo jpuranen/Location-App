@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LocationService } from '../locations/location.service';
 
+interface Location {
+  id: number, latitude: number, longitude: number
+}
 
 @Component({
   selector: 'app-map',
@@ -14,39 +17,30 @@ import { LocationService } from '../locations/location.service';
 })
 export class MapComponent implements OnInit {
 
-  //<agm-marker[latitude]="location.lat" [longitude]="location.lng" *ngFor="let location of locations;let i = index"></agm-marker>
-
-
-  //<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" draggable="false" > <sebm-google-map-marker *ngFor="let location of locations?.mapBindingFacilities; let i = index " [latitude]="location.latitude" [longitude]="location.longitude" [label]="X"
-
   @Input() 
   locations: Location[]
-
 
  lat : number = 61.49911;
  lng : number = 23.78712;
  locationService : LocationService;
 
  constructor(locationService : LocationService) {
-  //this.locations = locationService.fetch()
   this.locationService = locationService;
 }
   ngOnInit() {
-    console.log("map.component.ngOnInit...")
-    console.log("   map.component.ngOnInit:this.locations.length: " + this.locations.length)
+    //console.log("map.component.ngOnInit...")
   }
   ngOnChanges() {
-    console.log("map.component.ngOnChanges...")
-    console.log("   map.component.ngOnChanges:this.locations.length: " + this.locations.length)
-    }
+    //console.log("map.component.ngOnChanges...")
+  }
   mapClicked(event) {
-    console.log("Lat: " + event.coords.lat + " Lng: " + event.coords.lng)
+    console.log("Clicked on map: Lat: " + event.coords.lat + " Lng: " + event.coords.lng)
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.sendToServer();
   }
   sendToServer() {
-    console.log("map.component.sendToServer...")
+    console.log("map.component.sendToServer new coords...")
     let body = {"latitude": this.lat, "longitude": this.lng}
     this.locationService.posti((result) => {
       this.locations.push(result);

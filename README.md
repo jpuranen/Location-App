@@ -13,18 +13,23 @@ With Location-App you can add coordinates to the map either by entering the coor
 
 1. Install Node.js
 
-2. Create new Location-App project
+2. Install Angular CLI
+```
+npm install -g @angular/cli
+```
+
+3. Create new angular 2+ project
 ```
 ng new my-location-app
 ```
-3. Move to project folder (my-location-app)
+4. Move to project folder (my-location-app)
 ```
 cd my-location-app
 ```
-4. install @agm/core with npm 
+5. Install Angular Google Maps (AGM) Core - Angular 2+ Google Maps components 
 ```
 npm install @agm/core
 ```
-5. Download the files of this repository into your project folder (src-folder)
+6. Download the files of this repository into your project folder (src-folder)
 
-6. insert your own apiKey into app.module.ts
+7. insert your own apiKey into app.module.ts

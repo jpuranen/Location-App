@@ -40,3 +40,4 @@ npm install @agm/core
 ```
 ng serve -open 
 ```
+2. Start the backend server (not included in this repository)

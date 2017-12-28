@@ -33,3 +33,10 @@ npm install @agm/core
 6. Download the files of this repository into your project folder (src-folder)
 
 7. insert your own apiKey into app.module.ts
+
+### How to run the Location-App
+
+1. Build the application, start a web server and open the url in defaul browser
+```
+ng serve -open 
+```

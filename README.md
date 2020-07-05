@@ -4,7 +4,7 @@ https://github.com/jpuranen/Location-App
 
 ### About this repository
 
-This repository includes source files (can be found in src-folder) for Location-App. 
+This repository includes source files (can be found in the src-folder) for Location-App. 
 
 With Location-App you can add coordinates to the map either by entering the coordinates into the form or by clicking the map.
 
